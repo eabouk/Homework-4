@@ -15,9 +15,9 @@ from bs4 import BeautifulSoup
 
 ## Write the Python code to do so here.
 
-html_text = requests.get("https://www.nytimes.com/").text
-fileref = open("nytimes_html_text.html", "w")
-fileref.write(html_text)
+nytimes_data = requests.get("https://www.nytimes.com/").text
+fileref = open("nytimes_data.html", "w")
+fileref.write(nytimes_data)
 fileref.close()
 
 
