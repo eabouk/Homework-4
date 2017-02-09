@@ -65,10 +65,16 @@ except:
 ## and make a BeautifulSoup object out of that string!
 ## NOTE that the provided link does not include saving the online data in a file as part of the process. 
 ## But it still provides very useful hints/tricks about how to look for and identify the headlines on the NY Times page.
+
 soup = BeautifulSoup(nytimes_data, 'html.parser')
-print (soup.prettify())
+#soup is the string that contains all stuff in the nytimes website
+#print (soup.prettify())
 
-
+nytimes_hadlines = []
+print ("////////////////////////////STORY HEADINGS////////////////////////////////")
+#heading_tags = soup('<h2 class="story-heading"</h2>', 'lxml')
+#print(heading_tags)
+soup.findall('h2', class_ ="story-heading")
 #####################
 
 ## PART 3 (200 points)
