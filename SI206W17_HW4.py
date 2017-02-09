@@ -15,13 +15,22 @@ from bs4 import BeautifulSoup
 
 ## Write the Python code to do so here.
 
-nytimes_data = requests.get("https://www.nytimes.com/").text
-fileref = open("nytimes_data.html", "w")
-fileref.write(nytimes_data)
-fileref.close()
+nytimes_data = "nytimes_data.html"
+#given file ^ hopefully will not change 
+try:
+	#open it, read it, save it into nytimes_data
+	f = open(nytimes_data, 'r')
+	nytimes_data = f.read()
+	f.close()
 
-#readlines
-#read
+except:
+	#otherwise, write it in a new file! 
+	r = request.get("https://www.nytimes.com/")
+	nytimes_data = r.text
+	f = open(nytimes_data, "w")
+	f.write(nytimes_data)
+	f.close()
+
 
 #####################
 
