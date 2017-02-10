@@ -69,19 +69,19 @@ except:
 soup = BeautifulSoup(nytimes_data, 'html.parser')
 #soup is the string that contains all stuff in the nytimes website
 
-print ("////////////////////////////STORY HEADINGS////////////////////////////////")
 nytimes_headlines = []
 all_headers = soup.find_all('h2', class_ ="story-heading", limit = 10)
 #nytimes_headlines = all_headers.find_all('a', class_ = text)
+
 for x in all_headers:
 	headline = x.text.replace("\n", " ").strip()
+	#this strips and removes all the newline characters and replaces them with spaces
+	#the .strip() removes all the spaces too
 	nytimes_headlines.append(headline)
-	#print (type(nytimes_headlines))
-	#print (type(nytimes_headlines.append(x)))
+	#adds to the list
 
-print (nytimes_headlines)
+#print (nytimes_headlines)
 
-#print (all_headers)
 
 #####################
 
@@ -109,7 +109,12 @@ htmldoc = response.text
 
 soup = BeautifulSoup(htmldoc,"html.parser")
 people = soup.find_all("div",{"class":"views-row"})
+print ("PRINTING PEOPLE", people)
 umsi_titles = {}
+
+for name in soup.find_all('div', class_= "field-item even", property="dc:title"):
+	print (name)
+
 
 ## It may be helpful to translate the following from English to code:
 
