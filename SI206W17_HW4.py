@@ -109,13 +109,26 @@ htmldoc = response.text
 
 soup = BeautifulSoup(htmldoc,"html.parser")
 people = soup.find_all("div",{"class":"views-row"})
-print ("PRINTING PEOPLE", people)
 umsi_titles = {}
+names = []
+titles = []
 
 for name in soup.find_all('div', class_= "field-item even", property="dc:title"):
-	print (name)
+	#print ("PRINTING NAMES", name.text)
+	name = name.text
+	names.append(name)
+print ("PRINTING NAMES", names)
+for person in soup.find_all('div', class_="field field-name-field-person-titles field-type-text field-label-hidden"):
+	title = person.text.replace("\n", " ").strip()
+	titles.append(title)
+	print ("PRINTING TITLES", title)
+#print ("PRINTING PEOPLE", people)
 
+for x in names:
+	umsi_titles[x] = title
+	#title += 1
 
+print ("PRINTING DICTIONARY", umsi_titles)
 ## It may be helpful to translate the following from English to code:
 
 ## For each element in the list saved in the variable people,
